@@ -1,10 +1,11 @@
 package store
 
 import (
-	"github.com/stretchr/testify/assert"
-	"testing"
-
 	"github.com/alicebob/miniredis/v2"
+	"github.com/stretchr/testify/assert"
+	"test/config"
+	"test/database"
+	"testing"
 )
 
 func TestRedis(t *testing.T) {
@@ -13,15 +14,10 @@ func TestRedis(t *testing.T) {
 		panic(err)
 	}
 
-	defer s.Close()
+	r := New(database.NewRedisConn(config.Redis{Addr: s.Addr()}))
 
-	err = s.Set("foo", "bar")
+	r.Insert("foo")
+	v := r.Fetch(0)
 
-	assert.NoError(t, err)
-
-	v, err := s.Get("foo")
-
-	assert.NoError(t, err)
-	assert.Equal(t, v, "bar")
-
+	assert.Equal(t, v, "foo")
 }
