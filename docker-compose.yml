@@ -11,5 +11,6 @@ services:
       - MYSQL_USER=parham
       - MYSQL_PASSWORD=parham
       - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=root
     ports:
-    - 5431:5432
+    - 3305:3306
