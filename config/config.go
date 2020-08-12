@@ -2,6 +2,7 @@ package config
 
 import (
 	"bytes"
+	"fmt"
 	"strings"
 
 	log "github.com/sirupsen/logrus"
@@ -53,4 +54,9 @@ func Read(filename string) Config {
 	}
 
 	return cfg
+}
+
+func (d Database) Cstring() string {
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
+		d.User, d.Password, d.Host, d.Port, d.DBName)
 }
