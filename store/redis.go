@@ -11,7 +11,7 @@ type Redis struct {
 	Counter int
 }
 
-func New(r redis.Conn) Redis {
+func NewRedis(r redis.Conn) Redis {
 	return Redis{Conn: r, Counter: 0}
 }
 
