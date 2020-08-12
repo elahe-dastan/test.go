@@ -9,11 +9,21 @@ import (
 )
 
 type Config struct {
-	Redis Redis `mapstructure:"redis"`
+	Redis    Redis    `mapstructure:"redis"`
+	Database Database `mapstructure:"db"`
 }
 
 type Redis struct {
 	Addr string `mapstructure:"addr"`
+}
+
+type Database struct {
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	User     string `mapstructure:"user"`
+	DBName   string `mapstructure:"dbname"`
+	Password string `mapstructure:"password"`
+	SSLmode  string `mapstructure:"sslmode"`
 }
 
 func Read(filename string) Config {
