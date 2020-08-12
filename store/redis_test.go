@@ -14,7 +14,7 @@ func TestRedis(t *testing.T) {
 		panic(err)
 	}
 
-	r := New(database.NewRedisConn(config.Redis{Addr: s.Addr()}))
+	r := NewRedis(database.NewRedisConn(config.Redis{Addr: s.Addr()}))
 
 	r.Insert("foo")
 	v := r.Fetch(0)
