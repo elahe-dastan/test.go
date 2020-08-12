@@ -5,3 +5,11 @@ services:
     image: redis:latest
     ports:
     - 6378:6379
+  db:
+    image: mariadb:latest
+    environment:
+      - MYSQL_USER=parham
+      - MYSQL_PASSWORD=parham
+      - MYSQL_DATABASE=test
+    ports:
+    - 5431:5432
