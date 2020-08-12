@@ -10,5 +10,5 @@ test their code not the database, so they use mocking even when testing the data
 Now I want to explain more precisely about storages.<br/>
 1. redis: To mock redis and test it [miniredis](https://github.com/alicebob/miniredis) is used<br/>
 2. database: To mock database and test id [sqlmock](https://github.com/DATA-DOG/go-sqlmock) is used
-#sqlmock is a big shit
+# sqlmock is a big shit
 It tests actually nothing
