@@ -1,7 +1,6 @@
 package store
 
 import (
-	"fmt"
 	"github.com/gomodule/redigo/redis"
 	"log"
 	"strconv"
@@ -16,17 +15,17 @@ func New(r redis.Conn) Redis {
 	return Redis{Conn: r, Counter: 0}
 }
 
-func (redis *Redis) Insert(value string) {
-	_, err := redis.Conn.Do("SET", "eldis" + strconv.Itoa(redis.Counter), value)
+func (r *Redis) Insert(value string) {
+	_, err := r.Conn.Do("SET", "eldis" + strconv.Itoa(r.Counter), value)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	redis.Counter++
+	r.Counter++
 }
 
-func (redis *Redis) Fetch(id int) string {
-	value, err := redis.Conn.Do("GET", "eldis" + strconv.Itoa(id))
+func (r *Redis) Fetch(id int) string {
+	value, err := redis.String(r.Conn.Do("GET", "eldis" + strconv.Itoa(id)))
 	if err != nil {
 		log.Print("This id doesn't exist")
 	}
