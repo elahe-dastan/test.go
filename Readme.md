@@ -8,4 +8,7 @@ write to and read from that database to see if it works well, so you do need the
 but some people say that whether the database is up and running, or it's down is non of their business, and they want to<br/>
 test their code not the database, so they use mocking even when testing the database.<br/>
 Now I want to explain more precisely about storages.<br/>
-1. redis: To mock redis and test it [miniredis](https://github.com/alicebob/miniredis) is used
+1. redis: To mock redis and test it [miniredis](https://github.com/alicebob/miniredis) is used<br/>
+2. database: To mock database and test id [sqlmock](https://github.com/DATA-DOG/go-sqlmock) is used
+#sqlmock is a big shit
+It tests actually nothing
